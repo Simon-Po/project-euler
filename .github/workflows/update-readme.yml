@@ -1,0 +1,42 @@
+name: Update README
+
+on:
+  push:
+    branches: [main]
+    paths: ["haskell/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update solved problems
+        shell: bash
+        run: |
+          sed -n '1,/<!-- solved:start -->/p' README.md > README.new
+          printf '| Problem | Solution |\n| ---: | :--- |\n' >> README.new
+
+          find haskell -mindepth 2 -maxdepth 2 -type f -name main.hs \
+            | awk -F/ '$2 ~ /^[1-9][0-9]*$/ { print $2 }' \
+            | sort -n \
+            | while read -r problem; do
+                printf '| [%s](https://projecteuler.net/problem=%s) | [Haskell](haskell/%s/main.hs) |\n' \
+                  "$problem" "$problem" "$problem"
+              done >> README.new
+
+          sed -n '/<!-- solved:end -->/,$p' README.md >> README.new
+          mv README.new README.md
+
+      - name: Commit changes
+        run: |
+          git diff --quiet -- README.md && exit 0
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add README.md
+          git commit -m "Update solved problems"
+          git push
