@@ -21,5 +21,6 @@ My [Project Euler](https://projecteuler.net/) solutions, written in Haskell.
 | [14](https://projecteuler.net/problem=14) | [Haskell](haskell/14/main.hs) |
 | [16](https://projecteuler.net/problem=16) | [Haskell](haskell/16/main.hs) |
 | [20](https://projecteuler.net/problem=20) | [Haskell](haskell/20/main.hs) |
+| [34](https://projecteuler.net/problem=34) | [Haskell](haskell/34/main.hs) |
 | [36](https://projecteuler.net/problem=36) | [Haskell](haskell/36/main.hs) |
 <!-- solved:end -->
