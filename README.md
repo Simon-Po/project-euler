@@ -23,4 +23,5 @@ My [Project Euler](https://projecteuler.net/) solutions, written in Haskell.
 | [20](https://projecteuler.net/problem=20) | [Haskell](haskell/20/main.hs) |
 | [34](https://projecteuler.net/problem=34) | [Haskell](haskell/34/main.hs) |
 | [36](https://projecteuler.net/problem=36) | [Haskell](haskell/36/main.hs) |
+| [48](https://projecteuler.net/problem=48) | [Haskell](haskell/48/main.hs) |
 <!-- solved:end -->
